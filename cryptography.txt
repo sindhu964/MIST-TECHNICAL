@@ -1,0 +1,88 @@
+1.  Substitution2
+
+The message after decryption is:
+
+thereexistseveralotherwellestablishedhighschoolcomputersecuritycompetitionsincludingcyberpatriotanduscyberchallengethesecompetitionsfocusprimarilyonsystemsadministrationfundamentalswhichareveryusefulandmarketableskillshoweverwebelievetheproperpurposeofahighschoolcomputersecuritycompetitionisnotonlytoteachvaluableskillsbutalsotogetstudentsinterestedinandexcitedaboutcomputersciencedefensivecompetitionsareoftenlaboriousaffairsandcomedowntorunningchecklistsandexecutingconfigscriptsoffenseontheotherhandisheavilyfocusedonexplorationandimprovisationandoftenhaselementsofplaywebelieveacompetitiontouchingontheoffensiveelementsofcomputersecurityisthereforeabettervehiclefortechevangelismtostudentsinamericanhighschoolsfurtherwebelievethatanunderstandingofoffensivetechniquesisessentialformountinganeffectivedefenseandthatthetoolsandconfigurationfocusencounteredindefensivecompetitionsdoesnotleadstudentstoknowtheirenemyaseffectivelyasteachingthemtoactivelythinklikeanattackerpicoctfisanoffensivelyorientedhighschoolcomputersecuritycompetitionthatseekstogenerateinterestincomputerscienceamonghighschoolersteachingthemenoughaboutcomputersecuritytopiquetheircuriositymotivatingthemtoexploreontheirownandenablingthemtobetterdefendtheirmachinestheflagispicoCTF{N6R4M_4N41Y515_15_73D10U5_8E1BF808}
+
+flag: picoCTF{N6R4M_4N41Y515_15_73D10U5_8E1BF808}
+
+image ref: substitution.png
+
+
+
+2.  Transposition-trial
+
+The key is a 3 letter word 
+
+h e T
+1 2 0
+
+h e T
+f l -
+g - a
+s - i
+i c p
+C T o
+{ 7 F
+4 N R
+P 0 5
+1 N 5
+_ 1 6
+_ 3 5 
+P 3 X
+5 1 N
+3 _ V
+9 A A
+B 1 F
+8 } 7
+
+considering each row according to the alphabetical order of the key,
+
+The flag is picoCTF{7R4N5P051N6_15_3XP3N51V3_A9AFB178}
+
+image ref: transpo.png
+
+
+
+3.  RSA:
+
+RSA encryption algorithm is a type of public-key encryption algorithm.
+
+Pseudo Code (Example):
+int x = 61, int y = 53;
+int n = x * y;
+// n = 3233.
+
+// compute the totient, phi
+int phi = (x-1)*(y-1);
+// phi = 3120.
+
+int e = findCoprime(phi);
+// find an 'e' which is > 1 and is a co-prime of phi.
+// e = 17 satisfies the current values.
+
+// Using the extended euclidean algorithm, find 'd' which satisfies 
+// this equation:
+d = (1 mod (phi))/e;
+// d = 2753 for the example values.
+
+public_key = (e=17, n=3233);
+private_key = (d=2753, n=3233);
+
+// Given the plaintext P=123, the ciphertext C is :
+C = (123^17) % 3233 = 855;
+// To decrypt the cypher text C:
+P = (855^2753) % 3233 = 123;
+
+
+
+Benefits of RSA Encryption:
+
+Security:  RSA cryptography has a secure algorithm that safeguards data transmission.
+Public key cryptography:  RSA uses a public key cryptography algorithm for security. It means it uses two different keys to encrypt and decrypt data.
+Key exchange:  Since the RSA algorithm uses two keys for encryption and decryption, it’s possible to exchange secret keys without actually sending the private key over the network. It allows the encryption and safe transmission of data without sending decryption keys beforehand.
+Digital signatures:  RSA algorithm is perfect for digital signatures because the sender can sign a document or message using a private key while the receiver verifies the signature using a public key.
+
+
+
+
